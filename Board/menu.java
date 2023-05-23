@@ -8,15 +8,10 @@ public class menu {
 	public static void main(String[] args) {
 
 		Scanner scanner = new Scanner(System.in);
-
 		Board board = new Board();
-
 		board.setScanner(scanner);
-
 		board.start();
-
 		scanner.close();
-
 	}
 }
 
@@ -28,13 +23,9 @@ class Board {
 	void setScanner(Scanner scanner) {
 		this.scanner = scanner;
 	}
-
 	Article[] articles;
-
 	int articlesLastIndex;
-
 	Member[] members;
-
 	int membersLastIndex;
 
 	// 로그인 유무확인, 로그인 중일경우 로그인된 객체를 갖고있다.
@@ -60,7 +51,14 @@ class Board {
 
 	// 시작 및 기능 구현된 함수 호출하여 작동되도록 하는 함수
 	void start() {
-		showHelp();
+		System.out.println();
+		System.out.println("-------------------------------");
+		System.out.println();
+		System.out.println("  어서오세요. 게시판 방문을 환영합니다.");
+		System.out.println();
+		System.out.println("-------------------------------");
+		System.out.println();
+		System.out.println("명령어 리스트는 help를 입력하세요.");
 
 		while (true) {
 			System.out.printf("게시판) ");
@@ -113,11 +111,15 @@ class Board {
 	}
 
 	void doCommandList() {
-		System.out.println("== 게시물 리스트 ==");
-		System.out.printf("번호  |           날짜                     |    작성자        | 조회수 | 추천수 | 제목\n");
+		System.out.println();
+		System.out.println("                  === 게시물 리스트 ===");
+		System.out.println();
+		System.out.printf("%4s|%20s|%10s|%6s|%6s|%6s|%n","no", "date", "writer", "hit", "like", "title");
+		System.out.println();
+		System.out.println();
 		if (articlesLastIndex >= 0) {
 			for (int i = 0; i <= articlesLastIndex; i++) {
-				System.out.printf("%d   | %s     | %s         |  %d  |  %d  | %s\n", articles[i].id, articles[i].resDate,
+				System.out.printf("%4d|%20s|%10s|%6d|%6d|%6s|%n", articles[i].id, articles[i].resDate,
 						articles[i].writer, articles[i].views_count, articles[i].recd_count, articles[i].title);
 			}
 		} else {
@@ -259,7 +261,9 @@ class Board {
 	}
 
 	void doCommandSignup() {
-		System.out.println("== 회원 가입 ==");
+		System.out.println();
+		System.out.println("== 신규 회원 가입 ==");
+		System.out.println();
 
 		// 2짜리 배열의 경우 0, 1번에 값 저장, 마지막 배열인 1과 배열 길이 2 - 1 이 같은 경우 배열 확장.
 		if (membersLastIndex == members.length - 1) {
@@ -284,7 +288,7 @@ class Board {
 
 		member.id = newId;
 
-		System.out.printf("신규 아이디 : ");
+		System.out.printf("아이디 : ");
 		member.loginId = scanner.next().trim();
 		scanner.nextLine();
 
@@ -310,8 +314,10 @@ class Board {
 				if (getLoginNickNameCheck(member.nickName)) {
 					System.out.println("중복된 닉네임이 존재합니다.");
 				} else {
+					System.out.println();
 					System.out.println("회원가입이 완료되었습니다.");
-					System.out.printf("%s님 환영합니다.\n", member.loginId);
+					System.out.printf("%s님 환영합니다. 로그인 해주세요\n", member.loginId);
+					System.out.println();
 
 					membersLastIndex = lastMember();
 					members[membersLastIndex] = member;
@@ -322,7 +328,9 @@ class Board {
 	}
 
 	void doCommandLogin() {
+		System.out.println();
 		System.out.println("== 로그 인 ==");
+		System.out.println();
 		if (loginedMember == null) {
 			System.out.printf("로그인 아이디 입력 : ");
 			String tempId = scanner.next();
@@ -333,7 +341,9 @@ class Board {
 				String tempPw = scanner.next();
 				scanner.nextLine();
 				if (getLoginPwFact(tempPw)) {
+					System.out.println();
 					System.out.printf("%s님 환영합니다. 로그인 되었습니다.\n", tempId);
+					System.out.println();
 					loginedMember = getMemberById(tempId);
 				} else {
 					System.out.println("비밀번호가 일치하지 않습니다.");
@@ -370,19 +380,18 @@ class Board {
 
 	// 명령어 리스트
 	void showHelp() {
-		System.out.println("== 명령어 리스트 ==");
-		System.out.println("help : 명령어 리스트");
-		System.out.println("list : 게시물 리스팅");
-		System.out.println("add : 게시물 추가");
-		System.out.println("detail : 게시물 상세보기");
-		System.out.println("exit : 게시판 종료");
-		System.out.println("== 추가 명령어 리스트 ==");
-		System.out.println("modify : 게시물 수정");
-		System.out.println("delete : 게시물 삭제");
-		System.out.println("recd : 게시물 추천");
-		System.out.println("signup : 회원 가입");
-		System.out.println("login : 로그 인");
-		System.out.println("logout : 로그 아웃");
+		System.out.println();
+		System.out.println();
+		System.out.println("        ==== 게시판 명령어 리스트 ====");
+		System.out.println();
+		System.out.println(" detail : 게시물 읽기   "+"  list : 게시물 리스트   ");
+		System.out.println(" modify : 게시물 수정   "+"  add  : 게시물 추가");
+		System.out.println(" delete : 게시물 삭제   "+"  signup : 회원 가입");
+		System.out.println(" recd   : 게시물 추천   "+"  login  : 로그 인");
+		System.out.println(" exit   : 게시판 종료   "+"  logout : 로그 아웃");
+		System.out.println();
+		System.out.println();
+
 	}
 
 	// 배열 늘리기(게시글)
@@ -481,21 +490,4 @@ class Board {
 		return dateStr;
 	}
 
-}
-
-class Article {
-	int id;
-	int views_count;
-	int recd_count;
-	String resDate;
-	String title;
-	String body;
-	String writer;
-}
-
-class Member {
-	int id;
-	String loginId;
-	String loginPw;
-	String nickName;
 }
