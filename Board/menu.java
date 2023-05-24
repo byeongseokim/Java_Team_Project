@@ -1,4 +1,4 @@
-package Boradd;
+package Board;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -61,42 +61,42 @@ class Board {
 		System.out.println("명령어 리스트는 help를 입력하세요.");
 
 		while (true) {
-			System.out.printf("게시판) ");
+			System.out.printf("번호를 입력해주세요) ");
 			String command = scanner.nextLine().trim();
 
 			if (command.equals("help")) {
 				doCommandHelp();
-			} else if (command.equals("list")) {
+			} else if (command.equals("6")) {
 				doCommandList();
-			} else if (command.equals("add")) {
+			} else if (command.equals("7")) {
 				doCommandAdd();
-			} else if (command.equals("detail")) {
+			} else if (command.equals("1")) {
 				System.out.printf("상세보기 할 게시물의 번호 : ");
 				int idToDetail = scanner.nextInt();
 				scanner.nextLine();
 				doCommandDetail(idToDetail);
-			} else if (command.equals("modify")) {
+			} else if (command.equals("2")) {
 				System.out.printf("수정 할 게시물의 번호 : ");
 				int idToModify = scanner.nextInt();
 				scanner.nextLine();
 				doCommandModify(idToModify);
-			} else if (command.equals("delete")) {
+			} else if (command.equals("3")) {
 				System.out.printf("삭제 할 게시물의 번호 : ");
 				int idToDelete = scanner.nextInt();
 				scanner.nextLine();
 				doCommandDelete(idToDelete);
-			} else if (command.equals("recd")) {
+			} else if (command.equals("4")) {
 				System.out.printf("추천 할 게시물의 번호 : ");
 				int idToRecd = scanner.nextInt();
 				scanner.nextLine();
 				doCommandRecd(idToRecd);
-			} else if (command.equals("signup")) {
+			} else if (command.equals("8")) {
 				doCommandSignup();
-			} else if (command.equals("login")) {
+			} else if (command.equals("9")) {
 				doCommandLogin();
-			} else if (command.equals("logout")) {
+			} else if (command.equals("0")) {
 				doCommandLogout();
-			} else if (command.equals("exit")) {
+			} else if (command.equals("5")) {
 				doCommandExit();
 				break;
 			} else {
@@ -112,15 +112,15 @@ class Board {
 
 	void doCommandList() {
 		System.out.println();
-		System.out.println("                  === 게시물 리스트 ===");
+		System.out.println("              === 게시물 리스트 ===");
 		System.out.println();
 		System.out.printf("%4s|%20s|%10s|%6s|%6s|%6s|%n","no", "date", "writer", "hit", "like", "title");
-		System.out.println();
-		System.out.println();
+		System.out.println(" - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
 		if (articlesLastIndex >= 0) {
 			for (int i = 0; i <= articlesLastIndex; i++) {
 				System.out.printf("%4d|%20s|%10s|%6d|%6d|%6s|%n", articles[i].id, articles[i].resDate,
 						articles[i].writer, articles[i].views_count, articles[i].recd_count, articles[i].title);
+				System.out.println();
 			}
 		} else {
 			System.out.println("현재 게시물이 존재하지 않습니다.");
@@ -329,7 +329,7 @@ class Board {
 
 	void doCommandLogin() {
 		System.out.println();
-		System.out.println("== 로그 인 ==");
+		System.out.println("    == 로그 인 ==");
 		System.out.println();
 		if (loginedMember == null) {
 			System.out.printf("로그인 아이디 입력 : ");
@@ -364,7 +364,7 @@ class Board {
 			String temp = scanner.next();
 			scanner.nextLine();
 			if (temp.equals("Y") || temp.equals("y")) {
-				System.out.println("로그아웃이 완료되었습니다.");
+				System.out.println("로그아웃 되었습니다.");
 				loginedMember = null;
 			} else if (temp.equals("N") || temp.equals("n")) {
 				System.out.println("로그아웃이 취소되었습니다.");
@@ -382,16 +382,14 @@ class Board {
 	void showHelp() {
 		System.out.println();
 		System.out.println();
-		System.out.println("        ==== 게시판 명령어 리스트 ====");
+		System.out.println("           ==== 게시판 명령어 리스트 ====");
 		System.out.println();
-		System.out.println(" detail : 게시물 읽기   "+"  list : 게시물 리스트   ");
-		System.out.println(" modify : 게시물 수정   "+"  add  : 게시물 추가");
-		System.out.println(" delete : 게시물 삭제   "+"  signup : 회원 가입");
-		System.out.println(" recd   : 게시물 추천   "+"  login  : 로그 인");
-		System.out.println(" exit   : 게시판 종료   "+"  logout : 로그 아웃");
+		System.out.println("[1] detail : 게시물 읽기   "+" [6] list : 게시물 리스트   ");
+		System.out.println("[2] modify : 게시물 수정   "+" [7] add  : 게시물 추가");
+		System.out.println("[3] delete : 게시물 삭제   "+" [8] signup : 회원 가입");
+		System.out.println("[4] recd   : 게시물 추천   "+" [9] login  : 로그 인");
+		System.out.println("[5] exit   : 게시판 종료   "+" [0] logout : 로그 아웃");
 		System.out.println();
-		System.out.println();
-
 	}
 
 	// 배열 늘리기(게시글)
@@ -485,9 +483,8 @@ class Board {
 	// 현재 날짜/시간 반환
 	String getNowDateStr() {
 		Calendar cal = Calendar.getInstance();
-		SimpleDateFormat Date = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
+		SimpleDateFormat Date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String dateStr = Date.format(cal.getTime());
 		return dateStr;
 	}
-
 }
