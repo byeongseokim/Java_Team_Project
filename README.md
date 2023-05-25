@@ -4,10 +4,10 @@
 
 ### :small_orange_diamond: 🙋‍♂️팀원
 
-  - <a href="https://github.com/rkepdls" target="_blank">서동혁 님</a>
-  - <a href="https://github.com/Kjaegyu" target="_blank">김재규 님</a>                                    
-  - <a href="https://github.com/Parktaesunkr" target="_blank">박태선 님</a>
-  - <a href="https://github.com/byeongseokim" target="_blank">김병석 님</a> 
+  - <a href="https://github.com/rkepdls" target="_blank">서동혁 /a>
+  - <a href="https://github.com/Kjaegyu" target="_blank">김재규 </a>                                    
+  - <a href="https://github.com/Parktaesunkr" target="_blank">박태선 </a>
+  - <a href="https://github.com/byeongseokim" target="_blank">김병석 </a> 
 <br>
 
 ### :small_orange_diamond: 📆 프로젝트 기간
