@@ -61,6 +61,7 @@ class Board {
 		System.out.println("명령어 리스트는 help를 입력하세요.");
 
 		while (true) {
+			System.out.println();
 			System.out.printf("번호를 입력해주세요) ");
 			String command = scanner.nextLine().trim();
 
@@ -120,7 +121,6 @@ class Board {
 			for (int i = 0; i <= articlesLastIndex; i++) {
 				System.out.printf("%4d|%20s|%10s|%6d|%6d|%6s|%n", articles[i].id, articles[i].resDate,
 						articles[i].writer, articles[i].views_count, articles[i].recd_count, articles[i].title);
-				System.out.println();
 			}
 		} else {
 			System.out.println("현재 게시물이 존재하지 않습니다.");
@@ -128,7 +128,9 @@ class Board {
 	}
 
 	void doCommandAdd() {
-		System.out.println("== 게시물 추가 ==");
+		System.out.println();
+		System.out.println("    == 게시물 추가 ==");
+		System.out.println();
 
 		// 2짜리 배열의 경우 0, 1번에 값 저장, 마지막 배열인 1과 배열 길이 2 - 1 이 같은 경우 배열 확장.
 		if (articlesLastIndex == articles.length - 1) {
@@ -172,7 +174,9 @@ class Board {
 	}
 
 	void doCommandDetail(int id) {
-		System.out.println("== 게시물 상세 ==");
+		System.out.println();
+		System.out.println("    == 게시물 상세 ==");
+		System.out.println();
 
 		if (loginedMember != null) {
 			if (getArticleById(id) != null) {
@@ -191,7 +195,9 @@ class Board {
 	}
 
 	void doCommandModify(int id) {
-		System.out.println("== 게시물 수정 ==");
+		System.out.println();
+		System.out.println("    == 게시물 수정 ==");
+		System.out.println();
 		if (loginedMember != null) {
 			if (getArticleById(id) != null) {
 				if (loginCode == 1 || loginedMember.nickName.equals(getArticleById(id).writer)) {
@@ -224,7 +230,9 @@ class Board {
 	}
 
 	void doCommandDelete(int id) {
-		System.out.println("== 게시물 삭제 ==");
+		System.out.println();
+		System.out.println("    == 게시물 삭제 ==");
+		System.out.println();
 		if (loginedMember != null) {
 			if (getArticleById(id) != null) {
 				if (loginCode == 1 || loginedMember.nickName.equals(getArticleById(id).writer)) {
@@ -247,7 +255,9 @@ class Board {
 	}
 
 	void doCommandRecd(int id) {
-		System.out.println("== 게시물 추천 ==");
+		System.out.println();
+		System.out.println("게시물을 추천합니다.");
+		System.out.println();
 		if (loginedMember != null) {
 			if (getArticleById(id) != null) {
 				getArticleById(id).recd_count++;
@@ -317,7 +327,6 @@ class Board {
 					System.out.println();
 					System.out.println("회원가입이 완료되었습니다.");
 					System.out.printf("%s님 환영합니다. 로그인 해주세요\n", member.loginId);
-					System.out.println();
 
 					membersLastIndex = lastMember();
 					members[membersLastIndex] = member;
@@ -358,7 +367,9 @@ class Board {
 	}
 
 	void doCommandLogout() {
-		System.out.println("== 로그 아웃 ==");
+		System.out.println();
+		System.out.println("    == 로그 아웃 ==");
+		System.out.println();
 		if (loginedMember != null) {
 			System.out.println("로그아웃 하시겠습니까? ( Y / N )");
 			String temp = scanner.next();
@@ -375,7 +386,13 @@ class Board {
 	}
 
 	void doCommandExit() {
-		System.out.println("== 게시판 종료 ==");
+		System.out.println();
+		System.out.println("-------------------------------");
+		System.out.println();
+		System.out.println("  게시판을 종료합니다. 안녕히가세요.");
+		System.out.println();
+		System.out.println("-------------------------------");
+		System.out.println();
 	}
 
 	// 명령어 리스트
