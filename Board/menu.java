@@ -54,63 +54,94 @@ class Board {
 		System.out.println();
 		System.out.println("-------------------------------");
 		System.out.println();
-		System.out.println("  어서오세요. 게시판 방문을 환영합니다.");
+		System.out.println(" 어서오세요. 게시판 방문을 환영합니다.");
 		System.out.println();
 		System.out.println("-------------------------------");
+		System.out.println();
 		System.out.println();
 		System.out.println("명령어 리스트는 help를 입력하세요.");
 
 		while (true) {
 			System.out.println();
-			System.out.printf("번호를 입력해주세요) ");
+			System.out.printf("메뉴를 입력해주세요) ");
 			String command = scanner.nextLine().trim();
 
+			
 			if (command.equals("help")) {
 				doCommandHelp();
-			} else if (command.equals("6")) {
-				doCommandList();
-			} else if (command.equals("7")) {
-				doCommandAdd();
+				
+				
 			} else if (command.equals("1")) {
 				System.out.printf("상세보기 할 게시물의 번호 : ");
-				int idToDetail = scanner.nextInt();
+				int idToDetail = scanner.nextInt();				// 게시물 읽기
 				scanner.nextLine();
 				doCommandDetail(idToDetail);
+				
 			} else if (command.equals("2")) {
 				System.out.printf("수정 할 게시물의 번호 : ");
-				int idToModify = scanner.nextInt();
+				int idToModify = scanner.nextInt();				// 게시물 수정
 				scanner.nextLine();
 				doCommandModify(idToModify);
+				
 			} else if (command.equals("3")) {
 				System.out.printf("삭제 할 게시물의 번호 : ");
-				int idToDelete = scanner.nextInt();
+				int idToDelete = scanner.nextInt();				// 게시물 삭제
 				scanner.nextLine();
 				doCommandDelete(idToDelete);
+				
 			} else if (command.equals("4")) {
 				System.out.printf("추천 할 게시물의 번호 : ");
-				int idToRecd = scanner.nextInt();
+				int idToRecd = scanner.nextInt();				// 게시물 추천
 				scanner.nextLine();
-				doCommandRecd(idToRecd);
+				doCommandRecd(idToRecd);	
+				
+				
+			} else if (command.equals("6")) {
+				doCommandList();								// 게시물 리스트
+			} else if (command.equals("7")) {
+				doCommandAdd();									// 게시물 추가
+				
+				
 			} else if (command.equals("8")) {
-				doCommandSignup();
+				doCommandSignup();								// 회원 가입
 			} else if (command.equals("9")) {
-				doCommandLogin();
+				doCommandLogin();								// 로그인
 			} else if (command.equals("0")) {
-				doCommandLogout();
+				doCommandLogout();								// 로그아웃
+				
+				
 			} else if (command.equals("5")) {
-				doCommandExit();
+				doCommandExit();								// 게시판 종료
 				break;
 			} else {
 				System.out.println("잘못된 명령어 입니다.");
 			}
-
 		}
 	}
 
+	
+	
 	void doCommandHelp() {
 		showHelp();
 	}
 
+	
+	// 명령어 리스트
+	void showHelp() {
+		System.out.println();
+		System.out.println();
+		System.out.println("           ==== 게시판 명령어 리스트 ====");
+		System.out.println();
+		System.out.println("[1] detail : 게시물 읽기   "+" [6] list : 게시물 리스트   ");
+		System.out.println("[2] modify : 게시물 수정   "+" [7] add  : 게시물 추가");
+		System.out.println("[3] delete : 게시물 삭제   "+" [8] signup : 회원 가입");
+		System.out.println("[4] recd   : 게시물 추천   "+" [9] login  : 로그 인");
+		System.out.println("[5] exit   : 게시판 종료   "+" [0] logout : 로그 아웃");
+		System.out.println();
+	}	
+	
+	
+	
 	void doCommandList() {
 		System.out.println();
 		System.out.println("              === 게시물 리스트 ===");
@@ -127,6 +158,8 @@ class Board {
 		}
 	}
 
+	
+	
 	void doCommandAdd() {
 		System.out.println();
 		System.out.println("    == 게시물 추가 ==");
@@ -395,19 +428,7 @@ class Board {
 		System.out.println();
 	}
 
-	// 명령어 리스트
-	void showHelp() {
-		System.out.println();
-		System.out.println();
-		System.out.println("           ==== 게시판 명령어 리스트 ====");
-		System.out.println();
-		System.out.println("[1] detail : 게시물 읽기   "+" [6] list : 게시물 리스트   ");
-		System.out.println("[2] modify : 게시물 수정   "+" [7] add  : 게시물 추가");
-		System.out.println("[3] delete : 게시물 삭제   "+" [8] signup : 회원 가입");
-		System.out.println("[4] recd   : 게시물 추천   "+" [9] login  : 로그 인");
-		System.out.println("[5] exit   : 게시판 종료   "+" [0] logout : 로그 아웃");
-		System.out.println();
-	}
+
 
 	// 배열 늘리기(게시글)
 	void getArticlesIndexExpand() {
