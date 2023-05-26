@@ -117,9 +117,3 @@
 - [x] 게시판 종료
 
 ![image](https://github.com/byeongseokim/Board_Team_project/blob/master/images/6_%EB%A1%9C%EA%B7%B8%EC%95%84%EC%9B%83_%EA%B2%8C%EC%8B%9C%ED%8C%90_%EC%A2%85%EB%A3%8C/10%EA%B2%8C%EC%8B%9C%ED%8C%90%20%EC%A2%85%EB%A3%8C.PNG?raw=true)
-
-<br><br>
-
-### :small_orange_diamond: 어려웠던 부분
-
-<br><br>
