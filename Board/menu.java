@@ -1,4 +1,4 @@
-package Board;
+package board;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -146,12 +146,12 @@ class Board {
 		System.out.println();
 		System.out.println("              === 게시물 리스트 ===");
 		System.out.println();
-		System.out.printf("%4s|%20s|%10s|%6s|%6s|%6s|%n","no", "date", "writer", "hit", "like", "title");
-		System.out.println(" - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+		System.out.printf("%4s|%20s|%10s|%6s|%6s|%20s|%n","no", "title", "writer", "hit", "like", "date");
+		System.out.println(" - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ");
 		if (articlesLastIndex >= 0) {
 			for (int i = 0; i <= articlesLastIndex; i++) {
-				System.out.printf("%4d|%20s|%10s|%6d|%6d|%6s|%n", articles[i].id, articles[i].resDate,
-						articles[i].writer, articles[i].views_count, articles[i].recd_count, articles[i].title);
+				System.out.printf("%4d|%20s|%10s|%6d|%6d|%20s|%n", articles[i].id, articles[i].title,
+						articles[i].writer, articles[i].views_count, articles[i].recd_count, articles[i].resDate);
 			}
 		} else {
 			System.out.println("현재 게시물이 존재하지 않습니다.");
